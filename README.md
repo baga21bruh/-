@@ -45,7 +45,7 @@ supplier → warehouse → hub → client
 Установите зависимости:
 
 ```bash
-pip install pandas simpy networkx matplotlib numpy
+pip install -r requirements.txt
 ```
 
 ## Запуск модели
