@@ -1,0 +1,116 @@
+{
+  "nodes": [
+    {
+      "id": "supplier",
+      "type": "supplier",
+      "name": "Поставщик"
+    },
+    {
+      "id": "warehouse",
+      "type": "warehouse",
+      "name": "Склад"
+    },
+    {
+      "id": "hub",
+      "type": "transport_hub",
+      "name": "Транспортный хаб"
+    },
+    {
+      "id": "client",
+      "type": "client",
+      "name": "Клиент"
+    },
+    {
+      "id": "bank",
+      "type": "bank",
+      "name": "Банк"
+    }
+  ],
+  "edges": [
+    {
+      "from": "supplier",
+      "to": "warehouse",
+      "flow": "material",
+      "transit_time_days": 1,
+      "transport_cost_per_unit": 15
+    },
+    {
+      "from": "warehouse",
+      "to": "hub",
+      "flow": "material",
+      "transit_time_days": 1,
+      "transport_cost_per_unit": 20
+    },
+    {
+      "from": "hub",
+      "to": "client",
+      "flow": "material",
+      "transit_time_days": 2,
+      "transport_cost_per_unit": 30
+    },
+    {
+      "from": "client",
+      "to": "bank",
+      "flow": "financial",
+      "payment_delay_days": 1
+    },
+    {
+      "from": "bank",
+      "to": "supplier",
+      "flow": "financial",
+      "payment_delay_days": 1
+    },
+    {
+      "from": "bank",
+      "to": "warehouse",
+      "flow": "financial",
+      "payment_delay_days": 1
+    },
+    {
+      "from": "bank",
+      "to": "hub",
+      "flow": "financial",
+      "payment_delay_days": 1
+    }
+  ],
+  "base_parameters": {
+    "orders_per_day": 3,
+    "units_per_order": 100,
+    "sales_price_per_unit": 120,
+    "purchase_cost_per_unit": 55,
+    "warehouse_cost_per_unit": 8,
+    "penalty_rate_per_late_order": 1500,
+    "late_threshold_days": 5,
+    "simulation_days": 30
+  },
+  "scenarios": {
+    "normal": {
+      "hub_delay_days": 0,
+      "hub_capacity_factor": 1.0,
+      "extra_recovery_cost": 0
+    },
+    "attack": {
+      "hub_delay_days": 3,
+      "hub_capacity_factor": 0.6,
+      "extra_recovery_cost": 120000
+    },
+    "protection": {
+      "hub_delay_days": 1,
+      "hub_capacity_factor": 0.85,
+      "extra_recovery_cost": 50000
+    }
+  },
+  "kpis": [
+    "total_orders",
+    "delivered_orders",
+    "on_time_rate",
+    "revenue",
+    "transport_costs",
+    "warehouse_costs",
+    "purchase_costs",
+    "penalty_costs",
+    "recovery_costs",
+    "profit",
+    "average_delivery_time_days"
+  ]
+}

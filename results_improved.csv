@@ -1,0 +1,4 @@
+﻿scenario,total_orders,delivered_orders,on_time_rate,revenue,transport_costs,warehouse_costs,purchase_costs,penalty_costs,recovery_costs,total_costs,profit,average_delivery_time_days,on_time_rate_percent
+normal,90,90,1.0,1305000.0,585000.0,54000.0,495000.0,0.0,0.0,1134000.0,171000.0,4.0,100.0
+attack,60,60,0.0,870000.0,390000.0,36000.0,330000.0,150000.0,120000.0,1026000.0,-156000.0,7.0,0.0
+protection,90,90,1.0,1305000.0,585000.0,54000.0,495000.0,0.0,50000.0,1184000.0,121000.0,5.0,100.0
